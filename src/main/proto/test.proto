@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+import "google/protobuf/any.proto";
+
+option java_multiple_files = true;
+option java_package = "com.demo.grpc.api";
+option java_outer_classname = "TestDemo";
+
+package com.demo.grpc.api;
+
+// 定义服务类型：服务接口.定义请求参数和相应结果
+service DemoService {
+  rpc test (DemoRequest) returns (DemoResponse);
+}
+
+// 请求体
+message DemoRequest {
+  int32 testInt = 1;
+  int64 testLong = 2;
+  string testString = 3;
+  repeated string testArray = 4;Ω
+  map<string, string> testMap = 5;
+  google.protobuf.Any testAny = 6;
+  message TestNested {
+    int32 a = 1;
+    string b = 2;
+  }
+  TestNested testNested = 7;
+}
+
+// 响应体
+message DemoResponse {
+  oneof testOneof {
+    int32 code = 1;
+    string message = 2;
+  };
+}
