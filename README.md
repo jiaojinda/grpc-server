@@ -1,2 +1,2 @@
 # grpc-server
-SpringBoot+gRPC
+SpringBoot+gRPC 纯净脚手架
